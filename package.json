@@ -1,11 +1,10 @@
 {
   "name": "hyper-mcp-telegram-send",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Model Context Protocol server",
-  "private": true,
   "type": "module",
   "bin": {
-    "hyper-mcp-telegram-send": "./build/index.mjs"
+    "hyper-mcp-telegram-send": "build/index.mjs"
   },
   "files": [
     "build"
