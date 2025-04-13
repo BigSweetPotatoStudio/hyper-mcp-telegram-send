@@ -22,26 +22,14 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 
 import Telegram from "node-telegram-bot-api";
-import "dotenv/config";
-import markdownit from "markdown-it";
-import mk from "@vscode/markdown-it-katex";
-const md = markdownit({ html: true, breaks: true });
-
-function render(content: string) {
-  content = content.replace(/\\\[(.+?)\\\]/gs, "$$" + "$1" + "$$");
-  content = content.replace(/\\\((.+?)\\\)/g, "$$" + "$1" + "$$");
-  return md.render(content);
-}
-
-import qs from "querystring";
-
+// import "dotenv/config";
 /**
  * Create an MCP server with capabilities for resources (to list/read notes),
  * tools (to create new notes), and prompts (to summarize notes).
  */
 const server = new Server(
   {
-    name: "fetch",
+    name: "telegram-send",
     version: "0.1.0",
   },
   {
@@ -83,7 +71,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
  * Creates a new note with the provided title and content, and returns success message.
  */
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  console.log(request.params.name, request.params.arguments);
+  // console.log(request.params.name, request.params.arguments);
   switch (request.params.name) {
     case "sent_message": {
       const message = String(request.params.arguments?.message);
